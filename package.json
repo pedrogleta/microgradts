@@ -1,7 +1,6 @@
 {
   "name": "microgradts",
   "version": "1.0.1",
-  "main": "index.js",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.5.7",
@@ -19,5 +18,7 @@
   "bugs": {
     "url": "https://github.com/pedrogleta/microgradts/issues"
   },
-  "homepage": "https://github.com/pedrogleta/microgradts#readme"
+  "homepage": "https://github.com/pedrogleta/microgradts#readme",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts"
 }

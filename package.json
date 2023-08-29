@@ -1,6 +1,6 @@
 {
   "name": "microgradts",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.5.7",
@@ -8,7 +8,8 @@
   },
   "description": "A tiny Autograd engine based off of Andrej Karpathy's micrograd in Python",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "publish": "npm run build && npm publish"
   },
   "repository": {
     "type": "git",

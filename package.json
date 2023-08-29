@@ -4,10 +4,13 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.5.7",
+    "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
   },
   "description": "A tiny Autograd engine based off of Andrej Karpathy's micrograd in Python",
   "scripts": {
+    "start": "node ./lib/index.js",
+    "dev": "ts-node ./src/index.ts",
     "build": "tsc"
   },
   "repository": {

@@ -52,12 +52,37 @@ export const mul = (a: Value, b: Value) => {
   return out;
 };
 
-// const a = new Value(5);
-// const b = new Value(10);
-// const c = add(a, b);
+export const pow = (a: Value, b: Value) => {
+  const out = new Value(a.data ** b.data, [a, b], '**');
 
-// const d = new Value(20);
-// const e = mul(c, d);
-// e.backward();
+  function _backward() {
+    a.grad += b.data * a.data ** (b.data - 1) * out.grad;
+    b.grad += Math.log(a.data) * a.data ** b.data * out.grad;
+  }
+  out._backward = _backward;
 
-// console.log({ a: a.grad, b: b.grad, c: c.grad, d: d.grad, e: e.grad });
+  return out;
+};
+
+export const neg = (a: Value) => {
+  const out = new Value(-a.data, [a], '-');
+
+  function _backward() {
+    a.grad += -1 * out.grad;
+  }
+  out._backward = _backward;
+
+  return out;
+};
+
+export const div = (a: Value, b: Value) => {
+  const out = new Value(a.data / b.data, [a, b], '/');
+
+  function _backward() {
+    a.grad += (1 / b.data) * out.grad;
+    b.grad += (-a.data / b.data ** 2) * out.grad;
+  }
+  out._backward = _backward;
+
+  return out;
+};

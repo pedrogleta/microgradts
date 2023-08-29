@@ -1,14 +1,15 @@
 declare class Value {
     data: number;
-    _children: never[];
+    _children: Value[];
     _op: string;
     grad: number;
     _backward: () => void;
-    constructor(data: number, _children?: never[], _op?: string);
+    constructor(data: number, _children?: Value[], _op?: string);
     backward(): void;
-    add(child: Value): Value;
-    neg(): Value;
 }
-declare const a: Value;
-declare const b: Value;
-declare const c: Value;
+export declare const add: (a: Value, b: Value) => Value;
+export declare const mul: (a: Value, b: Value) => Value;
+export declare const pow: (a: Value, b: Value) => Value;
+export declare const neg: (a: Value) => Value;
+export declare const div: (a: Value, b: Value) => Value;
+export {};

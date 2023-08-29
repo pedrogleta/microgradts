@@ -1,0 +1,23 @@
+{
+  "name": "microgradts",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.5.7",
+    "typescript": "^5.2.2"
+  },
+  "description": "A tiny Autograd engine based off of Andrej Karpathy's micrograd in Python",
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/pedrogleta/microgradts.git"
+  },
+  "author": "Pedro Gonçalves Leta",
+  "bugs": {
+    "url": "https://github.com/pedrogleta/microgradts/issues"
+  },
+  "homepage": "https://github.com/pedrogleta/microgradts#readme"
+}

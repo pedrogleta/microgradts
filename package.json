@@ -9,7 +9,7 @@
   "description": "A tiny Autograd engine based off of Andrej Karpathy's micrograd in Python",
   "scripts": {
     "build": "tsc",
-    "publish": "npm run build && npm publish"
+    "publish": "npm publish"
   },
   "repository": {
     "type": "git",

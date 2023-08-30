@@ -45,12 +45,17 @@ export const add = (...args: Value[]) => {
   return out;
 };
 
-export const mul = (a: Value, b: Value) => {
-  const out = new Value(a.data * b.data, [a, b], '*');
+export const mul = (...args: Value[]) => {
+  const out = new Value(
+    args.reduce((acc, cur) => acc * cur.data, 1),
+    args,
+    '*',
+  );
 
   function _backward() {
-    a.grad += b.data * out.grad;
-    b.grad += a.data * out.grad;
+    for (const arg of args) {
+      arg.grad += (out.grad * out.data) / arg.data;
+    }
   }
   out._backward = _backward;
 

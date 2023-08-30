@@ -18,3 +18,19 @@ export class Neuron {
     return add(this.b, ...inputs.map((input, i) => mul(input, this.w[i])));
   }
 }
+
+export class Layer {
+  public neurons: Neuron[];
+
+  constructor(ninputs: number, nneurons: number) {
+    this.neurons = new Array(nneurons).map((_) => new Neuron(ninputs));
+  }
+
+  public parameters() {
+    return this.neurons.flatMap((neuron) => neuron.parameters());
+  }
+
+  public run(inputs: Value[]) {
+    return this.neurons.map((neuron) => neuron.run(inputs));
+  }
+}

@@ -1,6 +1,6 @@
 {
   "name": "microgradts",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.5.7",

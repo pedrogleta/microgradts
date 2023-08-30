@@ -1,4 +1,4 @@
-class Value {
+export class Value {
   public grad: number = 0;
   public _backward: () => void = () => {};
 
@@ -28,12 +28,17 @@ class Value {
   }
 }
 
-export const add = (a: Value, b: Value) => {
-  const out = new Value(a.data + b.data, [a, b], '+');
+export const add = (...args: Value[]) => {
+  const out = new Value(
+    args.reduce((acc, cur) => acc + cur.data, 0),
+    args,
+    '+',
+  );
 
   function _backward() {
-    a.grad += 1 * out.grad;
-    b.grad += 1 * out.grad;
+    for (const arg of args) {
+      arg.grad += 1 * out.grad;
+    }
   }
   out._backward = _backward;
 

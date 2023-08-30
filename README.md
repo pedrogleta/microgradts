@@ -3,7 +3,7 @@
 
 ![seal](seal.webp)
 
-A tiny Autograd engine Based off of Andrej Karpathy's Micrograd in Python. Implements backpropagation over a dynamically built DAG that operates over scalar values.
+A tiny Autograd engine Based off of Andrej Karpathy's [Micrograd](https://github.com/karpathy/micrograd/tree/master) in Python. Implements backpropagation over a dynamically built DAG that operates over scalar values.
 
 ### Installation
 

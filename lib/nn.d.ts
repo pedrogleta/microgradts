@@ -18,3 +18,8 @@ export declare class MLP {
     parameters(): Value[];
     run(inputs: Value[]): Value[];
 }
+export declare const nn: {
+    Neuron: typeof Neuron;
+    Layer: typeof Layer;
+    MLP: typeof MLP;
+};

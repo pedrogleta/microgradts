@@ -6,3 +6,15 @@ export declare class Neuron {
     parameters(): Value[];
     run(inputs: Value[]): Value;
 }
+export declare class Layer {
+    neurons: Neuron[];
+    constructor(ninputs: number, nneurons: number);
+    parameters(): Value[];
+    run(inputs: Value[]): Value[];
+}
+export declare class MLP {
+    layers: Layer[];
+    constructor(ninputs: number, noutputs: number[]);
+    parameters(): Value[];
+    run(inputs: Value[]): Value[];
+}

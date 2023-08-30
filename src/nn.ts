@@ -34,3 +34,26 @@ export class Layer {
     return this.neurons.map((neuron) => neuron.run(inputs));
   }
 }
+
+export class MLP {
+  public layers: Layer[];
+
+  constructor(ninputs: number, noutputs: number[]) {
+    const size = [ninputs, ...noutputs];
+    this.layers = new Array(size.length - 1).map(
+      (i) => new Layer(size[i], size[i + 1]),
+    );
+  }
+
+  public parameters() {
+    return this.layers.flatMap((layer) => layer.parameters());
+  }
+
+  public run(inputs: Value[]) {
+    let outputs = inputs;
+    for (const layer of this.layers) {
+      outputs = layer.run(outputs);
+    }
+    return outputs;
+  }
+}

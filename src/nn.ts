@@ -57,9 +57,3 @@ export class MLP {
     return outputs;
   }
 }
-
-export const nn = {
-  Neuron,
-  Layer,
-  MLP,
-};

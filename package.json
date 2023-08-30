@@ -1,6 +1,6 @@
 {
   "name": "microgradts",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.5.7",
@@ -23,5 +23,17 @@
   },
   "homepage": "https://github.com/pedrogleta/microgradts#readme",
   "main": "./lib/index.js",
-  "types": "./lib/index.d.ts"
+  "types": "./lib/index.d.ts",
+  "keywords": [
+    "autograd",
+    "micrograd",
+    "typescript",
+    "ts",
+    "machine learning",
+    "ml",
+    "neural network",
+    "nn",
+    "deep learning",
+    "dl"
+  ]
 }

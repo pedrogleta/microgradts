@@ -97,4 +97,4 @@ export const div = (a: Value, b: Value) => {
   return out;
 };
 
-export { nn } from './nn';
+export { Neuron, Layer, MLP } from './nn';

@@ -98,3 +98,19 @@ export const div = (a: Value, b: Value) => {
 };
 
 export { Neuron, Layer, MLP } from './nn';
+
+import { MLP } from './nn';
+
+const n = new MLP(3, [4, 4, 1]);
+
+const xs = [
+  [2.0, 3.0, -1.0],
+  [3.0, -1.0, 0.5],
+  [0.5, 1.0, 1.0],
+  [1.0, 1.0, -1.0],
+];
+
+const ys = [1.0, -1.0, -1.0, 1.0];
+const ypred = xs.map((x) => n.run(x.map((v) => new Value(v))));
+
+console.log(ypred);

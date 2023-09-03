@@ -4,8 +4,9 @@ export class Neuron {
   public w: Value[];
   public b: Value;
   constructor(ninputs: number) {
-    this.w = new Array(ninputs).map(
-      (_) => new Value(Math.random() * (1 - -1) + -1),
+    this.w = Array.from(
+      { length: ninputs },
+      () => new Value(Math.random() * (1 - -1) + -1), // Number between -1 and 1
     );
     this.b = new Value(0);
   }
@@ -23,7 +24,7 @@ export class Layer {
   public neurons: Neuron[];
 
   constructor(ninputs: number, nneurons: number) {
-    this.neurons = new Array(nneurons).map((_) => new Neuron(ninputs));
+    this.neurons = Array.from({ length: nneurons }, () => new Neuron(ninputs));
   }
 
   public parameters() {
@@ -40,8 +41,9 @@ export class MLP {
 
   constructor(ninputs: number, noutputs: number[]) {
     const size = [ninputs, ...noutputs];
-    this.layers = new Array(size.length - 1).map(
-      (i) => new Layer(size[i], size[i + 1]),
+    this.layers = Array.from(
+      { length: noutputs.length },
+      (_, i) => new Layer(size[i], size[i + 1]),
     );
   }
 

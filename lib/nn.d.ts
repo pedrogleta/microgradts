@@ -16,5 +16,6 @@ export declare class MLP {
     layers: Layer[];
     constructor(ninputs: number, noutputs: number[]);
     parameters(): Value[];
-    run(inputs: Value[]): Value[];
+    run(inputs: Value[]): Value | Value[];
 }
+export declare const loss: (ygt: Value[], ypred: Value[]) => Value;

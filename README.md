@@ -5,6 +5,7 @@
 
 #### [Video Demo](https://www.youtube.com/watch?v=0y3ZgxFiV9k)
 
+#### Description:
 A tiny Autograd engine Based off of Andrej Karpathy's [Micrograd](https://github.com/karpathy/micrograd/tree/master) in Python. Implements backpropagation over a dynamically built DAG that operates over scalar values.
 
 ### Installation

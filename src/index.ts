@@ -45,6 +45,18 @@ export const add = (...args: Value[]) => {
   return out;
 };
 
+export const sub = (a: Value, b: Value) => {
+  const out = new Value(a.data - b.data, [a, b], '-');
+
+  function _backward() {
+    a.grad += 1 * out.grad;
+    b.grad += -1 * out.grad;
+  }
+  out._backward = _backward;
+
+  return out;
+};
+
 export const mul = (...args: Value[]) => {
   const out = new Value(
     args.reduce((acc, cur) => acc * cur.data, 1),
@@ -61,6 +73,18 @@ export const mul = (...args: Value[]) => {
 
   return out;
 };
+
+// export const mul = (a: Value, b: Value) => {
+//   const out = new Value(a.data * b.data, [a, b], '*');
+
+//   function _backward() {
+//     a.grad += b.data * out.grad;
+//     b.grad += a.data * out.grad;
+//   }
+//   out._backward = _backward;
+
+//   return out;
+// };
 
 export const pow = (a: Value, b: Value) => {
   const out = new Value(a.data ** b.data, [a, b], '**');
@@ -98,8 +122,11 @@ export const div = (a: Value, b: Value) => {
 };
 
 export { Neuron, Layer, MLP } from './nn';
+export { toValues } from './utils';
 
-import { MLP } from './nn';
+// Delete this
+import { MLP, loss } from './nn';
+import { toValues } from './utils';
 
 const n = new MLP(3, [4, 4, 1]);
 
@@ -108,9 +135,21 @@ const xs = [
   [3.0, -1.0, 0.5],
   [0.5, 1.0, 1.0],
   [1.0, 1.0, -1.0],
-];
+].map((x) => toValues(x));
+const ys = toValues([1.0, -1.0, -1.0, 1.0]);
 
-const ys = [1.0, -1.0, -1.0, 1.0];
-const ypred = xs.map((x) => n.run(x.map((v) => new Value(v))));
+for (let i = 0; i < 200; i++) {
+  const ypred = xs.map((x) => n.run(x));
+  const l = loss(ys, ypred as Value[]);
 
-console.log(ypred);
+  for (const p of n.parameters()) {
+    p.grad = 0;
+  }
+  l.backward();
+
+  for (const p of n.parameters()) {
+    p.data -= 0.01 * p.grad;
+  }
+
+  console.log(i, l.data);
+}

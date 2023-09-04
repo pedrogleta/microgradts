@@ -1,4 +1,4 @@
-import { Value, add, mul } from '.';
+import { Value, add, mul, sub } from '.';
 
 export class Neuron {
   public w: Value[];
@@ -56,6 +56,14 @@ export class MLP {
     for (const layer of this.layers) {
       outputs = layer.run(outputs);
     }
-    return outputs;
+    return outputs.length === 1 ? outputs[0] : outputs;
   }
 }
+
+export const loss = (ygt: Value[], ypred: Value[]) => {
+  let result = new Value(0);
+  for (let i = 0; i < ygt.length; i++) {
+    result = add(result, mul(sub(ygt[i], ypred[i]), sub(ygt[i], ypred[i])));
+  }
+  return result;
+};

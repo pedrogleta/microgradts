@@ -18,4 +18,3 @@ export declare class MLP {
     parameters(): Value[];
     run(inputs: Value[]): Value | Value[];
 }
-export declare const loss: (ygt: Value[], ypred: Value[]) => Value;

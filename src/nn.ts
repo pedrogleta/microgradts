@@ -59,11 +59,3 @@ export class MLP {
     return outputs.length === 1 ? outputs[0] : outputs;
   }
 }
-
-export const loss = (ygt: Value[], ypred: Value[]) => {
-  let result = new Value(0);
-  for (let i = 0; i < ygt.length; i++) {
-    result = add(result, mul(sub(ygt[i], ypred[i]), sub(ygt[i], ypred[i])));
-  }
-  return result;
-};

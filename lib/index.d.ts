@@ -14,4 +14,4 @@ export declare const pow: (a: Value, b: Value) => Value;
 export declare const neg: (a: Value) => Value;
 export declare const div: (a: Value, b: Value) => Value;
 export { Neuron, Layer, MLP } from './nn';
-export { toValues } from './utils';
+export { toValues, getLoss } from './utils';

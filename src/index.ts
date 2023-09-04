@@ -122,4 +122,4 @@ export const div = (a: Value, b: Value) => {
 };
 
 export { Neuron, Layer, MLP } from './nn';
-export { toValues } from './utils';
+export { toValues, getLoss } from './utils';

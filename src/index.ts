@@ -123,33 +123,3 @@ export const div = (a: Value, b: Value) => {
 
 export { Neuron, Layer, MLP } from './nn';
 export { toValues } from './utils';
-
-// Delete this
-import { MLP, loss } from './nn';
-import { toValues } from './utils';
-
-const n = new MLP(3, [4, 4, 1]);
-
-const xs = [
-  [2.0, 3.0, -1.0],
-  [3.0, -1.0, 0.5],
-  [0.5, 1.0, 1.0],
-  [1.0, 1.0, -1.0],
-].map((x) => toValues(x));
-const ys = toValues([1.0, -1.0, -1.0, 1.0]);
-
-for (let i = 0; i < 200; i++) {
-  const ypred = xs.map((x) => n.run(x));
-  const l = loss(ys, ypred as Value[]);
-
-  for (const p of n.parameters()) {
-    p.grad = 0;
-  }
-  l.backward();
-
-  for (const p of n.parameters()) {
-    p.data -= 0.01 * p.grad;
-  }
-
-  console.log(i, l.data);
-}

@@ -74,18 +74,6 @@ export const mul = (...args: Value[]) => {
   return out;
 };
 
-// export const mul = (a: Value, b: Value) => {
-//   const out = new Value(a.data * b.data, [a, b], '*');
-
-//   function _backward() {
-//     a.grad += b.data * out.grad;
-//     b.grad += a.data * out.grad;
-//   }
-//   out._backward = _backward;
-
-//   return out;
-// };
-
 export const pow = (a: Value, b: Value) => {
   const out = new Value(a.data ** b.data, [a, b], '**');
 

@@ -1,4 +1,4 @@
-import { Value, add, mul, sub } from '.';
+import { Value, add, mul, sub } from './engine';
 
 export function toValues(arr: number[]): Value[] {
   return arr.map((x) => new Value(x));

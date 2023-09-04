@@ -1,4 +1,4 @@
-import { Value, add, mul, sub } from '.';
+import { Value, add, mul, sub } from './engine';
 
 export class Neuron {
   public w: Value[];

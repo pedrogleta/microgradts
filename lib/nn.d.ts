@@ -1,4 +1,4 @@
-import { Value } from '.';
+import { Value } from './engine';
 export declare class Neuron {
     w: Value[];
     b: Value;

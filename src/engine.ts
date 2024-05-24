@@ -108,3 +108,25 @@ export const div = (a: Value, b: Value) => {
 
   return out;
 };
+
+export const relu = (a: Value) => {
+  const out = new Value(a.data < 0 ? 0 : a.data, [a], "relu");
+
+  function _backward() {
+    a.grad += (out.data > 0 ? 1 : 0) * out.grad;
+  }
+  out._backward = _backward;
+
+  return out;
+};
+
+export const tanh = (a: Value) => {
+  const out = new Value(Math.tanh(a.data), [a], "tanh");
+
+  function _backward() {
+    a.grad += (1 - out.data ** 2) * out.grad;
+  }
+  out._backward = _backward;
+
+  return out;
+};

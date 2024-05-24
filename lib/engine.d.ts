@@ -13,3 +13,5 @@ export declare const mul: (...args: Value[]) => Value;
 export declare const pow: (a: Value, b: Value) => Value;
 export declare const neg: (a: Value) => Value;
 export declare const div: (a: Value, b: Value) => Value;
+export declare const relu: (a: Value) => Value;
+export declare const tanh: (a: Value) => Value;
